@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <title>Mots clés</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mot 1 dans le but de Mot 2 pour faire Mot 3 pour réaliser Mot 4">
+  <meta name="keywords" content="Mot 1, Mot2, Mot 3, Mot 4">
+  <meta name="author" content="Eloise David et Louis">  
+</head>
+<body>
+    <input type="text" class="word_add" placeholder="Mot clé à rajouter" /> <button type="button" id="add" onClick="add(this)">Ajouter un mot</button>
+    <br /><small>Appuyez successivement</small>
+    <br />
+<br />
+    <button id="go" type="button" onClick="generate()">Générer le contenu aléatoire</button>
+    <div id="content1"></div>
+
+
+</body>
+<script type="text/javascript">
+var key_word = [];
+    function add(id) {
+        key_word.push(document.getElementsByClassName('word_add')[0].value);
+
+    }
+
+</script>
+<script type="text/javascript">
+    function generate() {
+    var letter = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "l", "m", "o", "p", "q", "r", "s", "q", "u", "v", "w", "x", "y", "z", ".", ",", ";"];
+    var total_size = 1500; 
+    var word = '';
+    var space_medium = 10;
+    var jump_medium = 350;
+    var sizeToIncludeWord = 15; 
+        var j = 0;
+    for (var i = 0; i < total_size; i++) {
+        word+=letter[Math.floor(Math.random()*letter.length)];
+        if(i%space_medium === 0) word+= ' ';
+        if(i%jump_medium === 0) word+='<br />';
+        if(i%sizeToIncludeWord === 0)
+            word+=" "+key_word[Math.floor(Math.random()*key_word.length)]+ " ";
+    }
+    document.getElementById("content1").innerHTML= word;       
+    }
+
+
+</script>
+
+</html>
